@@ -2,3 +2,5 @@ cros-container-guest-tools
 cros-container-guest-tools-*-any.pkg.tar*
 pkg
 src
+*.tar.gz
+cros-container-guest-tools-git-*.tgz

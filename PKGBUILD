@@ -1,14 +1,14 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r275.19eab9e
-pkgrel=3
+pkgver=r282.ebca6be
+pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
 depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo' 'xorg-xrdb' 'xorg-xsetroot' 'mailcap')
 install=cros-container-guest-tools.install
-url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}"
+url='https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools/+archive/ebca6be15b038625fa74b4035e231e732fc81bb9.tar.gz'
+source=("$pkgname-$pkgver.tgz::${url}"
         'cros-sftp-conditions.conf'
         'cros-garcon-conditions.conf'
         'cros-locale.sh'
@@ -17,7 +17,8 @@ source=("git+${url}"
         'cros-nopasswd.rules'
         'cros-resolved.conf'
         'mimeapps.list')
-sha1sums=('SKIP'
+noextract=("$pkgname-$pkgver.tgz")
+sha1sums=('cc7914e8e7b43f829fff459205791c7558df4858'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           '8586cf72dacdcca82022519467065f70fe4a3294'
@@ -27,12 +28,11 @@ sha1sums=('SKIP'
           '53624105b0890a5ad19bce6bfe4cdddf9651b149'
           'f05da51a3913c5815d320c8ed536f2a7ac1fdcd5')
 
-pkgver() {
-	cd ${srcdir}/${_pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
+
+    # open archive
+    mkdir "${srcdir}/${_pkgname}"
+    bsdtar -xzf "$pkgname-$pkgver.tgz" -C "${srcdir}/${_pkgname}"
 
 	# license
 	install -m644 -D ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/cros-container-guest-tools/LICENSE
