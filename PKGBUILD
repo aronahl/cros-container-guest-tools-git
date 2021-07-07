@@ -1,13 +1,13 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r284.08b331d
+pkgver=r297.05b805f
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
 depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo' 'xorg-xrdb' 'xorg-xsetroot' 'mailcap')
 install=cros-container-guest-tools.install
-url='https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools/+archive/08b331d654e418933aa508449279df1622fc4422.tar.gz'
+url='https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools/+archive/a5b805fe5f78d0e384b2c0f342f9031f72a51db9.tar.gz'
 source=("$pkgname-$pkgver.tgz::${url}"
         'cros-sftp-conditions.conf'
         'cros-garcon-conditions.conf'
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tgz::${url}"
         'cros-resolved.conf'
         'mimeapps.list')
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=('524aeeb4cd9c42e62356cba20a3c00229890eaab'
+sha1sums=('24a6195fc14cce64502f38ad7719b01365de5749'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           '8586cf72dacdcca82022519467065f70fe4a3294'
@@ -27,7 +27,6 @@ sha1sums=('524aeeb4cd9c42e62356cba20a3c00229890eaab'
           '089ba58bc504146b29035a8efe70045eb2495fb5'
           '53624105b0890a5ad19bce6bfe4cdddf9651b149'
           'f05da51a3913c5815d320c8ed536f2a7ac1fdcd5')
-
 package() {
 
     # open archive
